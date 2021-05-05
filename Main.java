@@ -1,19 +1,51 @@
+import java.util.Scanner;
 public class Main{
+	static boolean printLog = true;
+	static Developer[] developers = new Developer[999];
+	static int numDevelopers = 0;
+
 	public static void main(String[] args){
-		Game cs = new Game();
-		cs.name = "Counter Strike";
-		cs.price = 20;
-		cs.discount = 5;
+		Scanner in = new Scanner(System.in);
+		in.useDelimiter("\r?\n");
 		
-		System.out.println("O preço do jogo " + cs.name + " é " + cs.price);
-		System.out.println("Mas, hoje estamos oferecendo um desconto, e ele ficará por " + cs.getFinalPrice());
-		
-		Game nfs = new Game();
-		nfs.name = "Need For Speed";
-		nfs.price = 40;
-		nfs.discount = 10;
-		
-		System.out.println("O preço do jogo " + nfs.name + " é " + nfs.price);
-		System.out.println("Mas, hoje estamos oferecendo um desconto, e ele ficará por " + nfs.getFinalPrice());
+		println("Seja bem-vindo!");
+		while(true){
+			printMenu();
+			int userOption = in.nextInt();
+			
+			if(userOption == 0){
+				break;
+			}
+				
+			if(userOption == 1){				
+				Developer dev = new Developer();
+				println("Qual o nome do desenvolvedor?");
+				dev.name = in.next();
+				
+				developers[numDevelopers] = dev;
+				numDevelopers++;
+			}
+			
+			if(userOption == 2){
+				for(int indexDev = 0; indexDev < numDevelopers; indexDev++){
+					println("Desenvolvedor[" + indexDev + "]: " + developers[indexDev].name);
+				}
+			}
+		}
+		println("Até a próxima :)");
+	}
+	
+	static void printMenu(){
+		println("");
+		println("---------------------");
+		println("(0) para sair");
+		println("(1) para cadastrar um desenvolvedor");
+		println("(2) para listar os desenvolvedores cadastrados");
+		println("Digite sua opção:");
+	}
+	
+	static void println(String content){
+		if(printLog)
+			System.out.println(content);
 	}
 }
