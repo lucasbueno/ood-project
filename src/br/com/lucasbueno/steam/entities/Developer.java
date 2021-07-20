@@ -1,22 +1,26 @@
 package br.com.lucasbueno.steam.entities;
-public class Developer {
-	private String name;
 
-	// método construtor
-	public Developer(String name) {
-		this.name = name;
+import java.util.ArrayList;
+
+public class Developer extends User {
+	private String address;
+
+	public Developer(String username, String email, String address) {
+		super(username, email);
+		this.address = address;
 	}
 
-	// método setter
-	public void setName(String name) {
-		if (name.isBlank())
-			return;
-		this.name = name;
+	public String getAddress() {
+		return address;
 	}
 
-	// método getter
-	public String getName() {
-		return name;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	@Override
+	public String getType() {
+		return "Meu tipo é DEVELOPER";
 	}
 
 }

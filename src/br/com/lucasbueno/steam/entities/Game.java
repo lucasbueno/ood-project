@@ -26,6 +26,10 @@ public class Game {
 	public double getPrice() {
 		return price;
 	}
+	
+	public double getPrice(double conversion) {
+		return price * conversion;
+	}
 
 	public void setPrice(double price) {
 		if(price < 0)

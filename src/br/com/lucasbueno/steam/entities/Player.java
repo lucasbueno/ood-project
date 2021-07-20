@@ -1,40 +1,30 @@
 package br.com.lucasbueno.steam.entities;
+
 import java.util.ArrayList;
 
-public class Player {
-	private String username;
-	private String email;
-	private ArrayList<Game> games;
+public class Player extends User {
+	private ArrayList<Player> friends;
 
-	public Player(String username, String email, ArrayList<Game> games) {
-		super();
-		this.username = username;
-		this.email = email;
-		this.games = games;
+	public Player(String username, String email) {
+		super(username, email);
+		this.friends = new ArrayList<Player>();
 	}
 
+	public ArrayList<Player> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(ArrayList<Player> friends) {
+		this.friends = friends;
+	}
+	
+	@Override
 	public String getUsername() {
-		return username;
+		return "ESTE MÉTODO FOI SOBRESCRITO " + super.getUsername();
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	@Override
+	public String getType() {
+		return "Meu tipo é PLAYER";
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public ArrayList<Game> getGames() {
-		return games;
-	}
-
-	public void setGames(ArrayList<Game> games) {
-		this.games = games;
-	}
-
 }
